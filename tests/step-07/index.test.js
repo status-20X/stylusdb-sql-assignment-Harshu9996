@@ -1,9 +1,6 @@
-
-
-//Step 6 tests
-const readCSV = require('../src/csvReader');
-const parseQuery = require('../src/queryParser');
-const executeSELECTQuery = require('../src/index');
+const readCSV = require('../../src/csvReader');
+const parseQuery = require('../../src/queryParser');
+const executeSELECTQuery = require('../../src/index');
 
 test('Read CSV File', async () => {
     const data = await readCSV('./sample.csv');
@@ -81,26 +78,16 @@ test('Execute SQL Query with Multiple WHERE Clause', async () => {
     expect(result[0]).toEqual({ id: '1', name: 'John' });
 });
 
-
-
-//Step 7 tests
-
-test('Execute SQL Query with Graeter Than', async ()=>{
+test('Execute SQL Query with Greater Than', async () => {
     const queryWithGT = 'SELECT id FROM sample WHERE age > 22';
-    const result  = await executeSELECTQuery(queryWithGT);
+    const result = await executeSELECTQuery(queryWithGT);
     expect(result.length).toEqual(2);
     expect(result[0]).toHaveProperty('id');
 });
 
-test('Execute SQL Query with Not Equal to',async ()=>{
-    const queryWithNT = 'SELECT name FROM sample WHERE age != 25';
-    const result = await executeSELECTQuery(queryWithNT);
+test('Execute SQL Query with Not Equal to', async () => {
+    const queryWithGT = 'SELECT name FROM sample WHERE age != 25';
+    const result = await executeSELECTQuery(queryWithGT);
     expect(result.length).toEqual(2);
     expect(result[0]).toHaveProperty('name');
 });
-
-// Todo
-
-
-//Step 8 tests
-
